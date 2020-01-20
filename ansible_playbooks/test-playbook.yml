@@ -1,0 +1,29 @@
+---
+- hosts: KMS
+  become: yes
+  tasks:
+    - name: copy defination files
+      copy:
+        src: "{{ item }}"
+        dest: /root/defination-files/
+      with_items:
+        - /home/ansadmin/test-deployment.yml
+        - /home/ansadmin/test-service.yml
+      become_user: root
+    - name: login to ECR
+      shell: |
+        $(aws ecr get-login --no-include-email --region us-east-1)
+      args:
+        executable: /bin/bash
+      become_user: root
+      become: yes
+    - name: Execute defination files to create pods
+      shell:
+        cmd: kubectl apply -f test-deployment.yml
+        chdir: /root/
+      become_user: root
+    - name: Execute defination files to create service
+      shell:
+        cmd: kubectl apply -f test-service.yml
+        chdir: /root/
+      become_user: root
