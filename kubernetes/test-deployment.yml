@@ -3,7 +3,7 @@ kind: Deployment
 metadata:                            # metadat for replicaset
   name: test-deployment
   labels:
-    app: tes
+    app: test
     type: java-app
     env: prod
 
@@ -23,3 +23,4 @@ spec:                               # specification for replicaset
  selector:                 # describe to select and monitor the filtered pods. It can be created by this replicaset or not
     matchLabels:
      type: java-app
+     app: test
