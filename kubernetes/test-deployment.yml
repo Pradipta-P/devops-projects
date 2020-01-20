@@ -23,4 +23,3 @@ spec:                               # specification for replicaset
  selector:                 # describe to select and monitor the filtered pods. It can be created by this replicaset or not
     matchLabels:
      app: test
-     name: test-pod
