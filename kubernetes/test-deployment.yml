@@ -13,8 +13,8 @@ spec:                               # specification for replicaset
       name: test-pod
       labels:
         app: test
-        #type: java-app
-        #name: test-pod
+        type: java-app
+        name: test-pod
     spec:                          # specification for template
      containers:
       - name: test-container
@@ -22,6 +22,6 @@ spec:                               # specification for replicaset
  replicas: 3                     # number of replica has to be create under this replicaset
  selector:                 # describe to select and monitor the filtered pods. It can be created by this replicaset or not
     matchLabels:
-     #type: java-app
+     name: test-pod
      app: test
 

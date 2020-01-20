@@ -10,4 +10,4 @@ spec:
   ports:
   - port: 8080                       # is port in service. Its a manditory field.
     targetPort: 8080                 # port in pod. If we won't provide the targetPort it asumes to be the same as service port
-    #nodePort: 30009                  # port in node. If we don't provide the nodeport it wll take any free port form the valid range(30000-32767)
+    nodePort: 30009                  # port in node. If we don't provide the nodeport it wll take any free port form the valid range(30000-32767)
