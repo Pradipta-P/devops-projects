@@ -22,4 +22,4 @@ spec:                               # specification for replicaset
  replicas: 3                     # number of replica has to be create under this replicaset
  selector:                 # describe to select and monitor the filtered pods. It can be created by this replicaset or not
     matchLabels:
-     app: test
+     type: java-app
