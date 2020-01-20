@@ -6,7 +6,7 @@ spec:
   type: LoadBalancer                   # type of service
   selector:
     app: test
-    type: java-app
+    name: test-pod
   ports:
   - port: 8080                       # is port in service. Its a manditory field.
     targetPort: 8080                 # port in pod. If we won't provide the targetPort it asumes to be the same as service port
