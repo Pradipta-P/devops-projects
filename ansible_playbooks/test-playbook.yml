@@ -20,10 +20,10 @@
     - name: Execute defination files to create pods
       shell:
         cmd: kubectl apply -f test-deployment.yml
-        chdir: /root/
+        chdir: /root/defination-files/
       become_user: root
     - name: Execute defination files to create service
       shell:
         cmd: kubectl apply -f test-service.yml
-        chdir: /root/
+        chdir: /root/defination-files/
       become_user: root
