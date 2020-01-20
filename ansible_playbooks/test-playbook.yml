@@ -7,8 +7,8 @@
         src: "{{ item }}"
         dest: /root/defination-files/
       with_items:
-        - /home/ansadmin/test-deployment.yml
-        - /home/ansadmin/test-service.yml
+        - /var/lib/jenkins/workspace/docker-project/kubernetes/test-deployment.yml
+        - /var/lib/jenkins/workspace/docker-project/kubernetes/test-service.yml
       become_user: root
     - name: login to ECR
       shell: |
