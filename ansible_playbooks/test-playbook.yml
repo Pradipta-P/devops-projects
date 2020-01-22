@@ -4,6 +4,9 @@
   vars:
     build_number: $BUILD_NUMBER
   tasks:
+    - name: print variable
+      debug:
+        msg: '{{build_number}}'
     - name: copy defination files
       copy:
         src: "{{ item }}"
