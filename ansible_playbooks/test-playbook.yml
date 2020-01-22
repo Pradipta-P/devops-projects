@@ -2,7 +2,7 @@
 - hosts: KMS
   become: yes
   vars:
-    build_number: $BUILD_NUMBER
+    build_number: "{{ BUILD_NUMBER }}"
   tasks:
     - name: print variable
       debug:
