@@ -19,7 +19,7 @@ spec:                               # specification for replicaset
      containers:
       - name: test-container
         imagePullPolicy: Always
-        image: 108531304587.dkr.ecr.us-east-1.amazonaws.com/demo-repo:docker-project.${build_number}
+        image: 108531304587.dkr.ecr.us-east-1.amazonaws.com/demo-repo:docker-project.1.0
  replicas: 3                     # number of replica has to be create under this replicaset
  selector:                 # describe to select and monitor the filtered pods. It can be created by this replicaset or not
     matchLabels:
