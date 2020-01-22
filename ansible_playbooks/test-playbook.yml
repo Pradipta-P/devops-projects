@@ -1,6 +1,8 @@
 ---
 - hosts: KMS
   become: yes
+  vars:
+    build_number: $BUILD_NUMBER
   tasks:
     - name: copy defination files
       copy:
