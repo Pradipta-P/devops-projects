@@ -2,7 +2,7 @@
 - hosts: KMS
   become: yes
   tasks:
-     - name: copy defination files
+    - name: copy defination files
       copy:
         src: "{{ item }}"
         dest: /root/defination-files/
