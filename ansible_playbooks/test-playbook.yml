@@ -19,7 +19,7 @@
       become: yes
     - name: Execute defination files to create pods
       shell:
-        cmd: kubectl apply -f test-deployment.yml --build_number='{{build_number}}'
+        cmd: kubectl apply -f test-deployment.yml
         chdir: /root/defination-files/
       become_user: root
     - name: Execute defination files to create service
