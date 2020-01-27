@@ -2,7 +2,7 @@
 - hosts: KMS
   become: yes
   vars:
-  - app_version: $JOB_NAME.$BUILD_NUMBER
+  - app_version: 73
   tasks:
     - name : Create testchart directoryr
       file:
