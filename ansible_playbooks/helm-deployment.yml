@@ -1,6 +1,8 @@
 ---
 - hosts: KMS
   become: yes
+  vars:
+  - app_version: $JOB_NAME.$BUILD_NUMBER
   tasks:
     - name : Create testchart directoryr
       file:
@@ -42,6 +44,6 @@
       become: yes
     - name: Execute test_deployment.sh file
       shell:
-        cmd: sh test_deployment.sh $JOB_NAME.$BUILD_NUMBER
+        cmd: sh test_deployment.sh "{{app_version}}"
         chdir: /root/helmcharts
       become_user: root
