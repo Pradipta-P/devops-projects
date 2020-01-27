@@ -42,6 +42,6 @@
       become: yes
     - name: Execute test_deployment.sh file
       shell:
-        cmd: sh test_deployment.sh
+        cmd: sh test_deployment.sh $BUILD_NUMBER
         chdir: /root/helmcharts
       become_user: root
