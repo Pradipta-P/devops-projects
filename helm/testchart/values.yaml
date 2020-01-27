@@ -1,0 +1,4 @@
+image:
+  repository: 108531304587.dkr.ecr.us-east-1.amazonaws.com/demo-repo
+  tag: docker-project.1.0
+  pullPolicy: IfNotPresent

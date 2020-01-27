@@ -1,0 +1,47 @@
+---
+- hosts: KMS
+  become: yes
+  tasks:
+    - name : Create testchart directoryr
+      file:
+        path: /root/helmcharts/testchart
+        state: directory
+        mode: 0755
+    - name : Create testchart/templetes directoryr
+      file:
+        path: /root/helmcharts/testchart/templetes
+        state: directory
+        mode: 0755
+    - name: copy deployment script
+      copy:
+        src: /var/lib/jenkins/workspace/docker-project/helm/test_deployment.sh
+        dest: /root/helmcharts
+      become_user: root
+    - name: copy Chart.yaml and values.yaml files
+      copy:
+        src: "{{ item }}"
+        dest: /root/helmcharts/testchart
+      with_items:
+        - /var/lib/jenkins/workspace/docker-project/helm/testchart/Chart.yaml
+        - /var/lib/jenkins/workspace/docker-project/helm/testchart/values.yaml
+      become_user: root
+    - name: copy deployment.yaml and service.yaml files
+      copy:
+        src: "{{ item }}"
+        dest: /root/helmcharts/testchart/templates
+      with_items:
+        - /var/lib/jenkins/workspace/docker-project/helm/templetes/deployment.yaml
+        - /var/lib/jenkins/workspace/docker-project/helm/templetes/service.yaml
+      become_user: root
+    - name: login to ECR
+      shell: |
+        $(aws ecr get-login --no-include-email --region us-east-1)
+      args:
+        executable: /bin/bash
+      become_user: root
+      become: yes
+    - name: Execute test_deployment.sh file
+      shell:
+        cmd: sh test_deployment.sh
+        chdir: /root/helmcharts
+      become_user: root
