@@ -12,9 +12,9 @@
         owner: kubectl
         group: kubectl
         mode: 0755
-    - name : Create testchart/templetes directoryr
+    - name : Create testchart/templates directoryr
       file:
-        path: /home/kubectl/helmcharts/testchart/templetes
+        path: /home/kubectl/helmcharts/testchart/templates
         state: directory
         owner: kubectl
         group: kubectl
@@ -37,8 +37,8 @@
         src: "{{ item }}"
         dest: /home/kubectl/helmcharts/testchart/templates/
       with_items:
-        - /var/lib/jenkins/workspace/docker-project/helm/templetes/deployment.yaml
-        - /var/lib/jenkins/workspace/docker-project/helm/templetes/service.yaml
+        - /var/lib/jenkins/workspace/docker-project/helm/templates/deployment.yaml
+        - /var/lib/jenkins/workspace/docker-project/helm/templates/service.yaml
       become_user: kubectl
     - name: login to ECR
       shell: |
