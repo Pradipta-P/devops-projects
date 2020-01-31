@@ -7,44 +7,44 @@
   tasks:
     - name : Create testchart directoryr
       file:
-        path: /root/helmcharts/testchart
+        path: /home/kubectl/helmcharts/testchart
         state: directory
         mode: 0755
     - name : Create testchart/templetes directoryr
       file:
-        path: /root/helmcharts/testchart/templetes
+        path: /home/kubectl/helmcharts/testchart/templetes
         state: directory
         mode: 0755
     - name: copy deployment script
       copy:
         src: /var/lib/jenkins/workspace/docker-project/helm/test_deployment.sh
-        dest: /root/helmcharts
-      become_user: root
+        dest: /home/kubectl/helmcharts
+      become_user: kubectl
     - name: copy Chart.yaml and values.yaml files
       copy:
         src: "{{ item }}"
-        dest: /root/helmcharts/testchart
+        dest: /home/kubectl/helmcharts/testchart
       with_items:
         - /var/lib/jenkins/workspace/docker-project/helm/testchart/Chart.yaml
         - /var/lib/jenkins/workspace/docker-project/helm/testchart/values.yaml
-      become_user: root
+      become_user: kubectl
     - name: copy deployment.yaml and service.yaml files
       copy:
         src: "{{ item }}"
-        dest: /root/helmcharts/testchart/templates
+        dest: /home/kubectl/helmcharts/testchart/templates
       with_items:
         - /var/lib/jenkins/workspace/docker-project/helm/templetes/deployment.yaml
         - /var/lib/jenkins/workspace/docker-project/helm/templetes/service.yaml
-      become_user: root
+      become_user: kubectl
     - name: login to ECR
       shell: |
         $(aws ecr get-login --no-include-email --region us-east-1)
       args:
         executable: /bin/bash
-      become_user: root
+      become_user: kubectl
       become: yes
     - name: Execute test_deployment.sh file
       shell:
         cmd: sh test_deployment.sh "{{app_version}}"
-        chdir: /root/helmcharts
-      become_user: root
+        chdir: /home/kubectl/helmcharts
+      become_user: kubectl
