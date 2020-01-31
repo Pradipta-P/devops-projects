@@ -9,11 +9,15 @@
       file:
         path: /home/kubectl/helmcharts/testchart
         state: directory
+        owner: kubectl
+        group: kubectl
         mode: 0755
     - name : Create testchart/templetes directoryr
       file:
         path: /home/kubectl/helmcharts/testchart/templetes
         state: directory
+        owner: kubectl
+        group: kubect
         mode: 0755
     - name: copy deployment script
       copy:
