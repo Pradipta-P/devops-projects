@@ -1,6 +1,7 @@
 ---
-- hosts: KMS
+- hosts: kubectl #KMS
   become: yes
+  user: kubectl
   vars:
   - app_version: 73
   tasks:
