@@ -35,7 +35,7 @@
     - name: copy deployment.yaml and service.yaml files
       copy:
         src: "{{ item }}"
-        dest: /home/kubectl/helmcharts/testchart/templates
+        dest: /home/kubectl/helmcharts/testchart/templates/
       with_items:
         - /var/lib/jenkins/workspace/docker-project/helm/templetes/deployment.yaml
         - /var/lib/jenkins/workspace/docker-project/helm/templetes/service.yaml
