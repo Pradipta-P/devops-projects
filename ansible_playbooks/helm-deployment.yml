@@ -42,7 +42,7 @@
       become_user: kubectl
     - name: login to ECR
       shell: |
-        $(aws ecr get-login --no-include-email --region us-east-1)
+        sudo $(aws ecr get-login --no-include-email --region us-east-1)
       args:
         executable: /bin/bash
       become_user: kubectl
