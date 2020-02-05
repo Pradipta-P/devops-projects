@@ -4,3 +4,4 @@
 <h4>Complete testing the pipeline</h4>
 <h5> Test completed successfully</h5>
 <h6> Completed <h6>
+<h7> Testing roling update and rolback</h7>
